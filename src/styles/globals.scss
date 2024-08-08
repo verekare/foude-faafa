@@ -1,0 +1,209 @@
+@use 'variables' as variables;
+
+/* Reset CSS */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 100%;
+  color: inherit;
+  vertical-align: baseline;
+  border: 0;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+  content: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+input {
+  font-family: variables.$font-family-default;
+}
+
+textarea {
+  font-family: variables.$font-family-default;
+}
+
+p::selection {
+  color: #f7a89d;
+  background-color: #cf6;
+}
+
+/* Globals */
+
+body,
+html {
+  height: 100vh;
+  font-family: variables.$font-family-default;
+  font-weight: 400;
+  color: variables.$color-default;
+}
+
+.sound {
+  background-color: variables.$color-sound;
+}
+
+.podcast {
+  background-color: variables.$color-podcast;
+}
+
+.master {
+  background-color: variables.$color-master;
+}
+
+.about {
+  background-color: variables.$color-about;
+}
+
+.tabsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.sideTabTitle {
+  font-family: variables.$font-family-display;
+  font-size: 54px;
+  transform: rotate(90deg);
+}
+
+.tabTitle {
+  font-family: variables.$font-family-display;
+  font-size: 54px;
+  margin-bottom: 90px;
+}
+
+.tabDescription {
+  font-family: variables.$font-family-default;
+  font-weight: 500;
+  font-size: 32px;
+}

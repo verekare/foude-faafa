@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "stylelint-config-recommended-vue",
+    "stylelint-config-standard"
+  ],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "string-quotes": "single",
+    "alpha-value-notation": "number",
+    "max-line-length": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "value-keyword-case": [
+      "lower",
+      {
+        "camelCaseSvgKeywords": true
+      }
+    ],
+    "no-descending-specificity": null,
+    "selector-class-pattern": [
+      "^[a-z][a-zA-Z0-9_-]+$",
+      {
+        "resolveNestedSelectors": true
+      }
+    ],
+    "at-rule-no-unknown": null,
+    "declaration-empty-line-before": [
+      "always",
+      {
+        "except": ["after-declaration"],
+        "ignore": ["after-comment", "first-nested", "inside-single-line-block"]
+      }
+    ],
+    "function-no-unknown": null,
+    "color-function-notation": ["modern", { "ignore": ["with-var-inside"] }]
+  }
+}

@@ -1,0 +1,60 @@
+/* Fonts */
+
+@font-face {
+  font-family: 'Nauryz Redkeds';
+  src: url('/src/assets/NAURYZREDKEDS.ttf');
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-weight: 300;
+  src: url('/src/assets/BeVietnamPro-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-weight: 500;
+  src: url('/src/assets/BeVietnamPro-Medium.ttf');
+}
+
+$font-family-default: 'Be Vietnam Pro', helvetica, sans-serif;
+$font-family-display: 'Nauryz Redkeds', helvetica, sans-serif;
+
+/* Colors */
+
+$color-default: #2e3732;
+$color-sound: #f0a0a0;
+$color-podcast: #7180b9;
+$color-master: #2ec4b6;
+$color-about: #cf6;
+
+/* Breakpoints */
+
+$breakpoints: (
+  sm: 640px,
+  md: 1024px,
+  lg: 1600px,
+);
+
+@function breakpoint($key) {
+  @return map-get($breakpoints, $key);
+}
+
+/* Mixins for responsive layout */
+
+@mixin md {
+  @media (max-width: #{breakpoint(md)}) {
+    @content;
+  }
+}
+
+/* Container */
+
+$container-max-widths: (
+  md: 960px,
+  lg: 1280px,
+);
+
+@function container-max-width($key) {
+  @return map-get($container-max-widths, $key);
+}

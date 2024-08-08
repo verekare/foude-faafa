@@ -1,0 +1,33 @@
+{
+  "editor.tabSize": 2,
+  "editor.wordWrapColumn": 128,
+  "editor.minimap.maxColumn": 128,
+  "editor.rulers": [128],
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "scss"],
+  "eslint.format.enable": true,
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "eslint.validate": ["javascript", "vue"],
+  "prettier.requireConfig": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.codeActionsOnSave": ["source.fixAll.stylelint"]
+  },
+  "[scss]": {
+    "editor.codeActionsOnSave": ["source.fixAll.stylelint"]
+  },
+  "html.format.wrapLineLength": 128
+}
