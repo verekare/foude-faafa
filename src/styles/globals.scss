@@ -207,3 +207,29 @@ html {
   font-weight: 500;
   font-size: 32px;
 }
+
+.active-tab-enter-from {
+  transform: translateX(-1000px);
+}
+
+.active-tab-leave-to {
+  transform: translateX(-1000px);
+}
+
+.active-tab-enter-active,
+.active-tab-leave-active {
+  transition: transform 0.5s ease;
+}
+
+.side-tab-enter-from {
+  transform: translateX(-1000px);
+}
+
+.side-tab-leave-to {
+  transform: translateX(-1000px);
+}
+
+.side-tab-enter-active,
+.side-tab-leave-active {
+  transition: transform 0.5s ease;
+}

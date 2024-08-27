@@ -14,12 +14,16 @@ const style = useCssModule();
 </script>
 
 <template>
-  <div :class="[style.activeTab, name]">
+  <TransitionGroup 
+    name="active-tab"
+    tag="div" 
+    :class="[style.activeTab, name]"
+  >
     <h1 class="tabTitle">{{ title }}</h1>
     <p class="tabDescription">Offering and providing colorful sounds for visuals, 
 assisting to immerse and dive into the right 
 spirit/feeling by means of sonic dimension.</p>
-  </div>
+  </TransitionGroup>
 </template>
 
 <style lang="scss" module>
