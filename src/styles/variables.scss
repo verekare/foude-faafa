@@ -23,10 +23,55 @@ $font-family-display: 'Nauryz Redkeds', helvetica, sans-serif;
 /* Colors */
 
 $color-default: #2e3732;
-$color-sound: #f0a0a0;
-$color-podcast: #7180b9;
+$color-sound: #fc917f;
+$color-podcast: #7b8cde;
 $color-master: #2ec4b6;
 $color-about: #cf6;
+
+$color-sound--gradient: linear-gradient(270deg, rgb(255 126 108 / 1) 0%, rgb(252 145 127 / 1) 23%, rgb(247 175 157 / 1) 100%);
+$color-podcast--gradient: linear-gradient(270deg, rgb(123 140 222 / 1) 0%, rgb(123 140 222 / 0.72) 72%);
+$color-master--gradient: linear-gradient(90deg, rgb(46 196 196 / 0.7) 0%, rgb(46 196 182 / 0.7) 23%, rgb(46 196 182 / 1) 100%);
+$color-about--gradient: linear-gradient(119deg, rgb(178 255 120) 0%, rgb(204, 255, 102) 52%);
+// $color-about--gradient: linear-gradient(27deg, rgb(126, 255, 178) 0%, rgb(204 255 102 / 1) 42%);
+
+/* Maps for colors and gradients */
+$colors: (
+  sound: $color-sound,
+  podcast: $color-podcast,
+  master: $color-master,
+  about: $color-about
+);
+
+$gradients: (
+  sound: $color-sound--gradient,
+  podcast: $color-podcast--gradient,
+  master: $color-master--gradient,
+  about: $color-about--gradient
+);
+
+@function bg($name, $has-gradient: false) {
+  @if $has-gradient {
+    @return map-get($gradients, $name);
+  } @else {
+    @return map-get($colors, $name);
+  }
+}
+
+/* Mixin for color backgrounds */
+
+@mixin gradient($name) {
+  background: map-get($gradients, $name);
+}
+
+@mixin generate-bg($name, $has-gradient: false) {
+  @if $has-gradient {
+    background: map-get($gradients, $name);
+  }
+  
+  @else {
+    background: map-get($colors, $name);
+  }
+}
 
 /* Breakpoints */
 

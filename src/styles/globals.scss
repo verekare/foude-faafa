@@ -153,7 +153,8 @@ textarea {
   font-family: variables.$font-family-default;
 }
 
-p::selection {
+p::selection,
+h1::selection {
   color: #f7a89d;
   background-color: #cf6;
 }
@@ -168,26 +169,53 @@ html {
   color: variables.$color-default;
 }
 
-.sound {
-  background-color: variables.$color-sound;
-}
-
-.podcast {
-  background-color: variables.$color-podcast;
-}
-
-.master {
-  background-color: variables.$color-master;
-}
-
-.about {
-  background-color: variables.$color-about;
-}
-
-.tabsContainer {
+.tabs {
   display: flex;
   flex-direction: row;
   justify-content: end;
+
+  .sound {
+    @include variables.generate-bg(sound);
+  }
+
+  .podcast {
+    @include variables.generate-bg(podcast);
+  }
+
+  .master {
+    @include variables.generate-bg(master);
+  }
+
+  .about {
+    @include variables.generate-bg(about);
+  }
+}
+
+.tab {
+  transition: width 0.45s ease;
+
+  &.active {
+    width: 100%;
+
+    &.sound {
+      @include variables.generate-bg(sound, true);
+    }
+
+    &.podcast {
+      @include variables.generate-bg(podcast, true);
+    }
+    &.master {
+      @include variables.generate-bg(master, true);
+    }
+    &.about {
+      @include variables.generate-bg(about, true);
+    }
+  }
+
+  &.inactive {
+    width: 3.125em;
+    // flex-basis: 50px;
+  }
 }
 
 .sideTabTitle {

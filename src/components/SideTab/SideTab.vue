@@ -1,4 +1,6 @@
 <script setup>
+import gsap from 'gsap/src';
+
 defineProps({
   title: {
     type: String,
@@ -10,16 +12,26 @@ defineProps({
   }
 })
 
-const style = useCssModule();
+const onEnter = (el, done) => {
+  gsap.from(el, {
+    y: -500,
+    duration: .4,
+    ease: "power2.out",
+    delay: .9,
+    onComplete: done,
+  })
+}
 </script>
 
 <template>
-  <section :class="[style.sideTab, name]">
+  <section :class="[$style.sideTab, name]">
     <div :class="$style.titleWrap">
-      <h2 :class="$style.sideTabTitle">
-        {{ title }}
-      </h2>
-    </div>
+        <Transition @enter="onEnter" appear :css="false">
+          <h2 :class="$style.sideTabTitle">
+            {{ title }}
+          </h2>
+      </Transition>
+      </div>
   </section>
 </template>
 

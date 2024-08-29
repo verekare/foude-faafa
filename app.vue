@@ -1,6 +1,7 @@
 <script setup>
 import SideTab from './src/components/SideTab/SideTab.vue';
 import ActiveTab from './src/components/ActiveTab/ActiveTab.vue';
+import gsap from 'gsap';
 const tabs = [
   { title: 'Sound design/production', name: 'sound' },
   { title: 'Podcast editing', name: 'podcast' },
@@ -8,39 +9,49 @@ const tabs = [
   { title: 'About', name: 'about' }
 ]
 
-const currentTab = ref(0)
+const currentTab = ref('about');
 
 const switchTab = (e) => {
-  console.log(e.target.firstChild.data);
-  switch (e.target.firstChild.data) {
-    case 'Sound design/production':
-      currentTab.value = 0;
-      break;
-    case 'Podcast editing':
-      currentTab.value = 1;
-      break;
-    case 'Mix/master':
-      currentTab.value = 2;
-      break;
-    case 'About':
-      currentTab.value = 3;
-      break;
-  }
+  //      Side Title goes Up
+  const title = e.target.children[0].children[0];
+  gsap.to(title, {
+    y: -400,
+    duration: .5,
+    ease: "power2.out",
+  })
+
+  //      Current Content Dissappearing
+  const currIndex = tabs.findIndex(tab => tab.name === currentTab.value);
+  const content = document.querySelector('.tabs').children[currIndex].children[0].children;
+  gsap.to(content, {
+    opacity: 0,
+    duration: .7,
+    ease: 'circ.out',
+  })
+  
+  //      Changing Index of Current Tab
+  const tabId = e.target.classList.value.split(' ').pop();
+  const index = tabs.findIndex(tab => tab.name === tabId);
+  setTimeout(() => {
+    currentTab.value = tabs[index].name;
+  }, 950)
 }
 </script>
 
 <template>
-  <div class="tabsContainer">
-    <transition-group name="tabs" mode="out-in">
-      <div v-for="(tab, index) in tabs">
+  <div class="tabs">
+    <div 
+      v-for="(tab, index) in tabs"
+      :key="index"
+      @click.stop="switchTab"
+      :class="['tab', tab.name, tab.name === currentTab ? 'active' : 'inactive']"
+    >
         <component 
-          :is="index === currentTab ? ActiveTab : SideTab" 
+          :is="tab.name === currentTab ? ActiveTab : SideTab" 
           :title="tab.title"
           :name="tab.name"
-          @click="switchTab"
         ></component>
       </div>
-    </transition-group>
   </div>
 </template>
 
