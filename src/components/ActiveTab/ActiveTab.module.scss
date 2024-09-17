@@ -1,9 +1,33 @@
 @use '/src/styles/variables.scss';
 
-.activeTab {
+.tab {
   padding: 1.25em;
   padding-top: 15px;
   height: 100vh;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  &__title {
+    font-family: variables.$font-family-display;
+    font-size: 54px;
+    margin-bottom: 90px;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 30vh;
+    
+    &__description {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2em;
+      &__text{
+        text-transform: lowercase;
+        font-family: variables.$font-family-default;
+        font-weight: 500;
+        font-size: 32px;
+      }
+    }
+  }
 }

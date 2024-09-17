@@ -17,7 +17,7 @@ const onEnter = (el, done) => {
     y: -500,
     duration: .4,
     ease: "power2.out",
-    delay: .9,
+    delay: .7,
     onComplete: done,
   })
 }

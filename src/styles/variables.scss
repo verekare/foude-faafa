@@ -14,7 +14,13 @@
 @font-face {
   font-family: 'Be Vietnam Pro';
   font-weight: 500;
-  src: url('/src/assets/BeVietnamPro-Medium.ttf');
+  src: url('/src/assets/BeVietnamPro-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-weight: 600;
+  src: url('/src/assets/BeVietnamPro-Semi.ttf');
 }
 
 $font-family-default: 'Be Vietnam Pro', helvetica, sans-serif;

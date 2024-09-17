@@ -156,7 +156,7 @@ textarea {
 p::selection,
 h1::selection {
   color: #f7a89d;
-  background-color: #cf6;
+  background-color: variables.$color-about;
 }
 
 /* Globals */
@@ -165,8 +165,9 @@ body,
 html {
   height: 100vh;
   font-family: variables.$font-family-default;
-  font-weight: 400;
+  font-weight: 500;
   color: variables.$color-default;
+  // overflow: hidden;
 }
 
 .tabs {
@@ -222,16 +223,4 @@ html {
   font-family: variables.$font-family-display;
   font-size: 54px;
   transform: rotate(90deg);
-}
-
-.tabTitle {
-  font-family: variables.$font-family-display;
-  font-size: 54px;
-  margin-bottom: 90px;
-}
-
-.tabDescription {
-  font-family: variables.$font-family-default;
-  font-weight: 500;
-  font-size: 32px;
 }
