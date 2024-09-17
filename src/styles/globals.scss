@@ -153,9 +153,10 @@ textarea {
   font-family: variables.$font-family-default;
 }
 
-p::selection {
+p::selection,
+h1::selection {
   color: #f7a89d;
-  background-color: #cf6;
+  background-color: variables.$color-about;
 }
 
 /* Globals */
@@ -164,46 +165,62 @@ body,
 html {
   height: 100vh;
   font-family: variables.$font-family-default;
-  font-weight: 400;
+  font-weight: 500;
   color: variables.$color-default;
+  // overflow: hidden;
 }
 
-.sound {
-  background-color: variables.$color-sound;
-}
-
-.podcast {
-  background-color: variables.$color-podcast;
-}
-
-.master {
-  background-color: variables.$color-master;
-}
-
-.about {
-  background-color: variables.$color-about;
-}
-
-.tabsContainer {
+.tabs {
   display: flex;
   flex-direction: row;
   justify-content: end;
+
+  .sound {
+    @include variables.generate-bg(sound);
+  }
+
+  .podcast {
+    @include variables.generate-bg(podcast);
+  }
+
+  .master {
+    @include variables.generate-bg(master);
+  }
+
+  .about {
+    @include variables.generate-bg(about);
+  }
+}
+
+.tab {
+  transition: width 0.45s ease;
+
+  &.active {
+    width: 100%;
+
+    &.sound {
+      @include variables.generate-bg(sound, true);
+    }
+
+    &.podcast {
+      @include variables.generate-bg(podcast, true);
+    }
+    &.master {
+      @include variables.generate-bg(master, true);
+    }
+    &.about {
+      @include variables.generate-bg(about, true);
+    }
+  }
+
+  &.inactive {
+    width: 3.125em;
+    // flex-basis: 50px;
+  }
 }
 
 .sideTabTitle {
   font-family: variables.$font-family-display;
   font-size: 54px;
   transform: rotate(90deg);
-}
-
-.tabTitle {
-  font-family: variables.$font-family-display;
-  font-size: 54px;
-  margin-bottom: 90px;
-}
-
-.tabDescription {
-  font-family: variables.$font-family-default;
-  font-weight: 500;
-  font-size: 32px;
 }

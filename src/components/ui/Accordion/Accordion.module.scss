@@ -1,0 +1,52 @@
+@use '/src/styles/variables.scss';
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+
+  &__item{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    cursor: pointer;
+
+    &__header {
+      font-family: variables.$font-family-default;
+      font-weight: 600;
+    }
+    &__details {
+      max-height: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out 0.5s, max-height 1s ease-out;
+
+      &-opened {
+        max-height: 6.25em;
+        opacity: 1;
+      }
+
+      &__text {
+        font-family: variables.$font-family-default;
+        font-weight: 300;
+      }
+    }
+    &__divider {
+      border-top: 1px solid variables.$color-default;
+      height: 1.3px;
+      width: 100%;
+    }
+  }
+
+  &--animated {
+    &-enter-from,
+    &-leave-to {
+      opacity: 0;
+      max-height: 0;
+    }
+
+    &-enter-active,
+    &-leave-active {
+      transition: opacity 0.5s, max-height 0.5s;
+    }
+  }
+}
