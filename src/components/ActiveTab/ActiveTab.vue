@@ -1,8 +1,10 @@
 <script setup>
 import gsap from 'gsap';
-import Accordion from '../ui/Accordion/Accordion.vue';
+import { reactive } from 'vue';
+import { Collapse } from 'vue-collapsed';
+import content from '~/src/constants/content';
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true
@@ -14,61 +16,14 @@ defineProps({
   description: Object
 })
 
-const list = [
-  {
-    header: "Music and sound design for animations",
-    details: [
-      "Composing music and music production.",
-      "Music sound design and various SFX creation.",
-      "Sonic solutions and sound selections that fit right for visuals.",
-      "Working with dynamics, mood and character of animation.",
-    ],
-  },
-  {
-    header: "Music and sound design for commercial",
-    details: [
-      "Communication with director and producers, finding right music and audio solutions for client's needs.",
-      "Reference selection.",
-      "Composing and music production.",
-      "Sound design and SFX creation.",
-      "Voice-over editing and mixing. Mix and master.",
-    ],
-  },
-  {
-    header: "Field recording and music for short video",
-    details: [
-      "Exploring and recording city sounds in Saigon, Vietnam.",
-      "Selection and arrangement recordings into one music collage.",
-      "Mixing and mastering."
-    ],
-  },
-  {
-    header: "Linear sound design for YouTube videos",
-    details: [
-      "SFX, Foley, Ambience, Acoustic curtains creation.",
-      "Using different approaches and techniques: working with sound and sample libraries, layering, synthesis, recording, sampling/resamplimg. ",
-      "Voice-over editing and mixing. Mixing & Mastering to fit youtube’s technical requirements.",
-      "Operating on short time."
-    ],
-  },
-  {
-    header: "Reverse engineering",
-    details: [
-      "Sound analysis. Recreating life-like sounds of campfire in the woods by means of synths, processing and layering.",
-    ],
-  },
-  {
-    header: "Motion video sound design",
-    details: [
-      "Creating athmospheric drones and ambienses.",
-      "Underlining movement and motion of the video.",
-    ],
-  },
-  {
-    header: "Music for mood video",
-    details: ["Creating mood and “atmosphere” by means of music and little help of foley/ambience."],
-  },
-]
+console.log(props.name);
+const list = reactive(content[props.name]);
+
+function handleAccordion(selectedIndex) {
+  list.forEach((_, index) => {
+    list[index].isExpanded = index === selectedIndex ? !list[index].isExpanded : false
+  })
+}
 
 let tl = gsap.timeline();
 
@@ -97,10 +52,19 @@ const onEnterContent = (el, done) => {
   tl.to(el, {
     opacity: 1,
     duration: .3,
-    delay: .2,
+    delay: 0,
     ease: "power2.in",
     onComplete: done,
   })
+}
+
+function onExpanded(index) {
+   indexToScroll = index
+   if (!isCollapsing) {
+    list.value[7].scrollIntoView({
+      behavior: 'smooth',
+    })
+   }
 }
 </script>
 
@@ -120,7 +84,26 @@ const onEnterContent = (el, done) => {
                 <p>{{ paragraph }}</p>
               </li>
             </ul>
-            <!-- <Accordion :list="list"></Accordion> -->
+
+            <div :class="$style.tab__content__works">
+              <div :class="[props.name === 'master' ? $style['tab__content__works__list--row'] : $style.tab__content__works__list, $style.tab__content__works__list]">
+                <div v-for="(item, index) in list" :key="item.header" :class="$style.tab__content__works__list__item">
+                  <button @click="handleAccordion(index)" v-html="item.header" :class="$style.tab__content__works__list__item__header">
+                  </button>
+                  <Collapse
+                    :when="list[index].isExpanded"
+                    :class="$style.tab__content__works__list__item__details"
+                    @expanded="() => onExpanded(index)"
+                  >
+                    <li v-for="paragraph in item.details" >
+                      <span v-html="paragraph" :class="$style.tab__content__works__list__item__details__text"></span>
+                    </li>
+                  </Collapse>
+                  <div v-if="props.name != 'master' && index != list.length - 1" :class="$style.tab__content__works__list__item__divider"></div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </Transition>
   </div>
