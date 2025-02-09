@@ -13,12 +13,14 @@
 
     &__header {
       font-family: variables.$font-family-default;
+      font-size: 1.3rem;
       font-weight: 600;
     }
     &__details {
+      font-size: 1.2rem;
       max-height: 0;
       opacity: 0;
-      transition: opacity 0.3s ease-in-out 0.5s, max-height 1s ease-out;
+      transition: opacity 0.3s ease-in-out, max-height 0.3s ease-out;
 
       &-opened {
         max-height: 6.25em;
